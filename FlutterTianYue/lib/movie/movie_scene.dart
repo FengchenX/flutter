@@ -20,7 +20,7 @@ class MovieSceneState extends State<MovieScene> {
 
   void getDatas() {
     IOHttpUtils client = new IOHttpUtils();
-    var data = client.get('');
+    var data = client.get('/movies');
     list = data['data']['movies'];
     page++;
   }

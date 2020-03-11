@@ -109,8 +109,8 @@ class RootSceneState extends State<RootScene> {
           children: <Widget>[
 //            ComicHomeScene(),
             VideoScene(),
-//            MovieScene(),
-            HomeScene(),
+            MovieScene(),
+//            HomeScene(),
 //            MeScene(),
           ],
           index: _tabIndex,
@@ -121,7 +121,7 @@ class RootSceneState extends State<RootScene> {
           items: <BottomNavigationBarItem>[
 //            BottomNavigationBarItem(icon: getTabIcon(0)),
             BottomNavigationBarItem(icon: getTabIcon(1)),
-            BottomNavigationBarItem(icon: getTabIcon(2)),
+            BottomNavigationBarItem(icon: getTabIcon(1)),
 //            BottomNavigationBarItem(icon: getTabIcon(3)),
           ],
           currentIndex: _tabIndex,
