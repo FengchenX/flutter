@@ -23,7 +23,27 @@ class GridViewState extends State<GridViewPage> {
               crossAxisSpacing: 10),
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
-        itemBuilder: null),
+          itemBuilder: (BuildContext context, int index) {
+            return
+          }
+      ),
     );
+  }
+}
+
+
+class ListItem {
+  final String title;
+  final IconData iconData;
+  ListItem(this.title, this.iconData);
+}
+
+class ListItemWidget extends StatelessWidget {
+  final ListItem listItem;
+
+  ListItemWidget(this.listItem);
+
+  @override
+  Widget build(BuildContext context) {
   }
 }
