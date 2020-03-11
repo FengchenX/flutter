@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tianyue/movie/movie_scene.dart';
 
 import 'package:tianyue/public.dart';
 
@@ -75,22 +76,23 @@ class RootSceneState extends State<RootScene> {
 
   Future<bool> _onWillPop() {
     return showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('提示'),
-        content: new Text('客官，确定退出app?'),
-        actions: <Widget>[
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('放弃'),
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('提示'),
+            content: new Text('客官，确定退出app?'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('放弃'),
+              ),
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: new Text('退出'),
+              ),
+            ],
           ),
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('退出'),
-          ),
-        ],
-      ),
-    ) ?? false;
+        ) ??
+        false;
   }
 
   @override
@@ -105,10 +107,11 @@ class RootSceneState extends State<RootScene> {
       child: Scaffold(
         body: IndexedStack(
           children: <Widget>[
-            ComicHomeScene(),
+//            ComicHomeScene(),
             VideoScene(),
+//            MovieScene(),
             HomeScene(),
-            MeScene(),
+//            MeScene(),
           ],
           index: _tabIndex,
         ),
@@ -116,10 +119,10 @@ class RootSceneState extends State<RootScene> {
           backgroundColor: Colors.white,
           activeColor: TYColor.primary,
           items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: getTabIcon(0)),
+//            BottomNavigationBarItem(icon: getTabIcon(0)),
             BottomNavigationBarItem(icon: getTabIcon(1)),
             BottomNavigationBarItem(icon: getTabIcon(2)),
-            BottomNavigationBarItem(icon: getTabIcon(3)),
+//            BottomNavigationBarItem(icon: getTabIcon(3)),
           ],
           currentIndex: _tabIndex,
           onTap: (index) {
