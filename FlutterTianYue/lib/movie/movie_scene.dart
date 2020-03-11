@@ -27,8 +27,6 @@ class MovieSceneState extends State<MovieScene> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-//    var children = list.map((elem) => )
     return Scaffold(
       body: GridView.builder(
         padding: EdgeInsets.fromLTRB(10, Screen.topSafeHeight, 10, 10),
