@@ -121,7 +121,7 @@ class RootSceneState extends State<RootScene> {
           items: <BottomNavigationBarItem>[
 //            BottomNavigationBarItem(icon: getTabIcon(0)),
             BottomNavigationBarItem(icon: getTabIcon(1)),
-            BottomNavigationBarItem(icon: getTabIcon(1)),
+            BottomNavigationBarItem(icon: getTabIcon(2)),
 //            BottomNavigationBarItem(icon: getTabIcon(3)),
           ],
           currentIndex: _tabIndex,

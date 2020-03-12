@@ -15,13 +15,23 @@ class MovieSceneState extends State<MovieScene> {
     getDatas();
   }
 
-  List<Map> list;
+  var list = List<Map>();
   int page = 1;
 
   void getDatas() {
-    IOHttpUtils client = new IOHttpUtils();
-    var data = client.get('/movies');
-    list = data['data']['movies'];
+//    IOHttpUtils client = new IOHttpUtils();
+//    var data = client.get('/movies');
+//    list = data['data']['movies'];
+
+    for (int i = 0; i < 5; i++) {
+      var elem = Map();
+      elem['thumb'] =
+          'https://wx3.sinaimg.cn/crop.0.0.604.339.360/006QmDx6ly1g2ia60z17lj30gs0b8q5u.jpg';
+      elem['name'] = ((page - 1) * 5 + i).toString();
+      elem['video_id'] = ((page - 1) * 5 + i).toString();
+      list.add(elem);
+    }
+
     page++;
   }
 
