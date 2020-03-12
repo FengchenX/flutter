@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fengapp/public.dart';
 import 'package:fengapp/utility/http.dart';
@@ -12,28 +15,50 @@ class MovieSceneState extends State<MovieScene> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getDatas();
+//    _get();
   }
 
   var list = List<Map>();
   int page = 1;
 
-  void getDatas() {
-//    IOHttpUtils client = new IOHttpUtils();
-//    var data = client.get('/movies');
-//    list = data['data']['movies'];
+  _get() async {
+    var httpClient = new HttpClient();
+    var uri = Uri.http('localhost:8080', '/movies');
+    var request = await httpClient.getUrl(uri);
+    var response = await request.close();
+    var responseBody = await response.transform(utf8.decoder).join();
+//    Map<String, dynamic> data = json.decode(responseBody);
 
-    for (int i = 0; i < 5; i++) {
-      var elem = Map();
-      elem['thumb'] =
-          'https://wx3.sinaimg.cn/crop.0.0.604.339.360/006QmDx6ly1g2ia60z17lj30gs0b8q5u.jpg';
-      elem['name'] = ((page - 1) * 5 + i).toString();
-      elem['video_id'] = ((page - 1) * 5 + i).toString();
-      list.add(elem);
+    var data = jsonDecode(responseBody);
+
+    if (!mounted) {
+      return;
     }
 
-    page++;
+    setState(() {
+      print(data);
+      list = data['data']['movies'];
+    });
   }
+
+//  getDatas() async {
+//    get2().then((res) {
+//      Map<String, dynamic> d = res.data;
+//      print(d['data']['movies']);
+//    });
+////    list = data['data']['movies'];
+//
+//    for (int i = 0; i < 5; i++) {
+//      var elem = Map();
+//      elem['thumb'] =
+//          'https://wx3.sinaimg.cn/crop.0.0.604.339.360/006QmDx6ly1g2ia60z17lj30gs0b8q5u.jpg';
+//      elem['name'] = ((page - 1) * 5 + i).toString();
+//      elem['video_id'] = ((page - 1) * 5 + i).toString();
+//      list.add(elem);
+//    }
+//
+//    page++;
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +74,11 @@ class MovieSceneState extends State<MovieScene> {
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
+          if (list.length == 0) {
+            _get();
+          }
           if (index == list.length - 1) {
-            getDatas();
+            _get();
           }
           return buildMovieItem(list[index]);
         },
