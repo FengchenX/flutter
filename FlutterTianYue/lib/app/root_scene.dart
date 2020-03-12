@@ -23,16 +23,16 @@ class RootSceneState extends State<RootScene> {
   bool isFinishSetup = false;
   PageState pageState = PageState.Loading;
   List<Image> _tabImages = [
-    Image.asset('img/tab_comic_home_n.png'),
+//    Image.asset('img/tab_comic_home_n.png'),
     Image.asset('img/tab_video_home_n.png'),
     Image.asset('img/tab_book_home_n.png'),
-    Image.asset('img/tab_mine_n.png'),
+//    Image.asset('img/tab_mine_n.png'),
   ];
   List<Image> _tabSelectedImages = [
-    Image.asset('img/tab_home_comic_p.png'),
+//    Image.asset('img/tab_home_comic_p.png'),
     Image.asset('img/tab_video_home_p.png'),
     Image.asset('img/tab_book_home_p.png'),
-    Image.asset('img/tab_mine_p.png'),
+//    Image.asset('img/tab_mine_p.png'),
   ];
 
   @override
@@ -120,8 +120,8 @@ class RootSceneState extends State<RootScene> {
           activeColor: TYColor.primary,
           items: <BottomNavigationBarItem>[
 //            BottomNavigationBarItem(icon: getTabIcon(0)),
+            BottomNavigationBarItem(icon: getTabIcon(0)),
             BottomNavigationBarItem(icon: getTabIcon(1)),
-            BottomNavigationBarItem(icon: getTabIcon(2)),
 //            BottomNavigationBarItem(icon: getTabIcon(3)),
           ],
           currentIndex: _tabIndex,
