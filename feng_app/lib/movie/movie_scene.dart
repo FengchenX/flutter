@@ -18,12 +18,13 @@ class MovieSceneState extends State<MovieScene> {
 //    _get();
   }
 
-  var list = List<Map>();
+  var list = List();
   int page = 1;
 
   _get() async {
+    print("************************************");
     var httpClient = new HttpClient();
-    var uri = Uri.http('localhost:8080', '/movies');
+    var uri = Uri.http('192.168.201.1:8080', '/movies');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
@@ -36,8 +37,7 @@ class MovieSceneState extends State<MovieScene> {
     }
 
     setState(() {
-      print(data);
-      list = data['data']['movies'];
+      list.addAll(data['data']['movies']);
     });
   }
 
@@ -77,7 +77,7 @@ class MovieSceneState extends State<MovieScene> {
           if (list.length == 0) {
             _get();
           }
-          if (index == list.length - 1) {
+          if (index == list.length - 1 && list.length < 40) {
             _get();
           }
           return buildMovieItem(list[index]);
@@ -86,7 +86,7 @@ class MovieSceneState extends State<MovieScene> {
     );
   }
 
-  Widget buildMovieItem(Map elem) {
+  Widget buildMovieItem(Map<String, dynamic> elem) {
     return GestureDetector(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
