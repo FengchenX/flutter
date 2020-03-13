@@ -1,0 +1,92 @@
+name: openeye_flutter
+description: A new Flutter project.
+
+# 以下定义应用程序的版本和内部版本号。
+# 版本号是由点分隔的三个数字，如1.2.43
+# 后跟一个用+分隔的可选内部版本号。
+# 可以在flutter中覆盖版本号和构建器号
+# build通过分别指定--build-name和--build-number。
+# 在semver.org上阅读有关版本控制的更多信息。
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^1.0.13
+  fluro: ^1.4.0
+  timeago: ^2.0.10
+  scoped_model: ^1.0.1
+  event_bus: ^1.0.1
+  shimmer: ^0.0.6
+  connectivity: ^0.3.2
+  fluttertoast: ^2.2.11
+  shared_preferences: ^0.4.3
+  cached_network_image: ^2.0.0-rc
+  flutter_swiper: ^1.1.4
+  flutter_spinkit: ^3.0.0
+  flutter_staggered_grid_view: ^0.2.6 
+  flutter_webview_plugin: ^0.3.0+2
+  video_player:
+    git:
+      url: https://github.com/songxiaoliang/flutter_video_player.git
+  
+      # 以下将Cupertino Icons字体添加到您的应用程序中。与CupertinoIcons类一起使用，用于iOS样式图标。
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  uses-material-design: true
+
+  assets:
+   - assets/images/icon_home_tab.png
+   - assets/images/icon_home_tab_pressed.png
+   - assets/images/icon_popular_tab.png
+   - assets/images/icon_popular_tab_pressed.png
+   - assets/images/icon_movie_tab.png
+   - assets/images/icon_movie_tab_pressed.png
+   - assets/images/icon_mine_tab.png
+   - assets/images/icon_mine_tab_pressed.png
+   - assets/images/icon_empty.webp
+   - assets/images/icon_load_error.png
+   - assets/images/icon_placeholder.png
+   - assets/images/icon_default_avatar.png
+   - assets/images/icon_videodetail_num.png
+   - assets/images/icon_videodetail_jishu.png
+   - assets/images/icon_videodetail_name.png
+   - assets/images/icon_videodetail_playlist.png
+   - assets/images/icon_videodetail_director.png
+   - assets/images/icon_videodetail_starring.png
+   - assets/images/icon_videodetail_desc.png
+   
+  # 图像资源可以引用一个或多个特定于分辨率的“变体”，请参阅 https://flutter.io/assets-and-images/#resolution-aware。
+
+  # 有关从包依赖项添加资产的详细信息，请参阅 https://flutter.io/assets-and-images/#from-packages
+
+  # 要在应用程序中添加自定义字体，请在此处添加字体部分，
+  # 在这个“flutter”部分。 此列表中的每个条目都应该有一个
+  # “family”键带有字体系列名称，而“fonts”键带有
+  # list给出字体的资产和其他描述符。 对于
+  # example：
+  fonts:
+    - family: Lobster
+      fonts:
+        - asset: assets/fonts/Lobster-1.4.otf
+        # style: italic
+    - family: FZLanTing
+      fonts:
+        - asset: assets/fonts/FZLanTingHeiS-DB1-GB-Regular.TTF
+        # weight: 700
+  #
+  # 有关包依赖关系中字体的详细信息，参见https://flutter.io/custom-fonts/#from-packages
