@@ -15,6 +15,9 @@ class MovieSceneState extends State<MovieScene> {
     _get();
   }
 
+
+
+
   @override
   void initState() {
     // TODO: implement initState
