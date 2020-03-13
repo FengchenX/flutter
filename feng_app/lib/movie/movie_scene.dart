@@ -11,6 +11,10 @@ class MovieScene extends StatefulWidget {
 }
 
 class MovieSceneState extends State<MovieScene> {
+  MovieSceneState() {
+    _get();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -22,7 +26,7 @@ class MovieSceneState extends State<MovieScene> {
 
   _get() async {
     var httpClient = new HttpClient();
-    var uri = Uri.http('192.168.115.49:8080', '/movies');
+    var uri = Uri.http('192.168.25.177:8080', '/movies');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
@@ -52,9 +56,9 @@ class MovieSceneState extends State<MovieScene> {
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           if (list.length == 0) {
-            _get();
+            return null;
           }
-          if (index == list.length - 1 && list.length < 40) {
+          if (index == list.length - 1) {
             _get();
           }
           return buildMovieItem(list[index]);
