@@ -15,50 +15,27 @@ class MovieSceneState extends State<MovieScene> {
   void initState() {
     // TODO: implement initState
     super.initState();
-//    _get();
   }
 
-  var list = List<Map>();
+  var list = List();
   int page = 1;
 
   _get() async {
     var httpClient = new HttpClient();
-    var uri = Uri.http('localhost:8080', '/movies');
+    var uri = Uri.http('192.168.115.49:8080', '/movies');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
-//    Map<String, dynamic> data = json.decode(responseBody);
-
-    var data = jsonDecode(responseBody);
+    Map<String, dynamic> data = json.decode(responseBody);
 
     if (!mounted) {
       return;
     }
 
     setState(() {
-      print(data);
-      list = data['data']['movies'];
+      list.addAll(data['data']['movies']);
     });
   }
-
-//  getDatas() async {
-//    get2().then((res) {
-//      Map<String, dynamic> d = res.data;
-//      print(d['data']['movies']);
-//    });
-////    list = data['data']['movies'];
-//
-//    for (int i = 0; i < 5; i++) {
-//      var elem = Map();
-//      elem['thumb'] =
-//          'https://wx3.sinaimg.cn/crop.0.0.604.339.360/006QmDx6ly1g2ia60z17lj30gs0b8q5u.jpg';
-//      elem['name'] = ((page - 1) * 5 + i).toString();
-//      elem['video_id'] = ((page - 1) * 5 + i).toString();
-//      list.add(elem);
-//    }
-//
-//    page++;
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +54,7 @@ class MovieSceneState extends State<MovieScene> {
           if (list.length == 0) {
             _get();
           }
-          if (index == list.length - 1) {
+          if (index == list.length - 1 && list.length < 40) {
             _get();
           }
           return buildMovieItem(list[index]);
