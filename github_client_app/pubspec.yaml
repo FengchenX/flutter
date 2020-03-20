@@ -32,6 +32,7 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+  build_runner: ^1.0.0
   json_serializable: ^2.0.0
 
 # The following section is specific to Flutter.
