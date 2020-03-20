@@ -10,12 +10,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "new_page": (context) => NewRoute(),
+        "new_page": (context) => EchoRoute(),
         "/": (context) => MyHomePage(
               title: 'Flutter Demo Home Page',
             )
       },
 //      home: MyHomePage(),
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(builder: (context) {
+          String routeName = settings.name;
+          // 如果访问的路由页需要登录， 但当前未登录， 则直接返回当前页路由，
+          // 引导用户登录， 其他情况则正常打开路由
+        });
+      },
     );
   }
 }
@@ -69,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 //导航到新路由
 //                Navigator.push(context, route);
-                Navigator.pushNamed(context, 'new_page');
+                Navigator.pushNamed(context, 'new_page', arguments: "hi");
               },
             )
           ],
@@ -144,6 +151,18 @@ class RouterTestRoute extends StatelessWidget {
           print('路由返回值: $result');
         },
         child: Text('打开提示项'),
+      ),
+    );
+  }
+}
+
+class EchoRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    return Scaffold(
+      body: Text(
+        args,
       ),
     );
   }
