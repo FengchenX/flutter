@@ -9,7 +9,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RouterTestRoute(),
+      routes: {
+        "new_page": (context) => NewRoute(),
+        "/": (context) => MyHomePage(
+              title: 'Flutter Demo Home Page',
+            )
+      },
+//      home: MyHomePage(),
     );
   }
 }
@@ -62,7 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
               textColor: Colors.blue,
               onPressed: () {
                 //导航到新路由
-                Navigator.push(context, route);
+//                Navigator.push(context, route);
+                Navigator.pushNamed(context, 'new_page');
               },
             )
           ],
