@@ -26,7 +26,7 @@ class MovieSceneState extends State<MovieScene> {
 
   _get() async {
     var httpClient = new HttpClient();
-    var uri = Uri.http('192.168.25.177:8080', '/movies');
+    var uri = Uri.http('172.17.165.97:8080', '/movies');
     var request = await httpClient.getUrl(uri);
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
