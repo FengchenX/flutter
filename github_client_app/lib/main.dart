@@ -1,26 +1,81 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:github_client_app/routes/LanguageRoute.dart';
+import 'package:github_client_app/routes/LoginRoute.dart';
+import 'package:github_client_app/routes/ThemeChangeRoute.dart';
+import 'package:github_client_app/routes/home_page.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+import 'common/Global.dart';
+import 'common/GmLocalizations.dart';
+import 'common/LocaleModel.dart';
+import 'common/ThemeModel.dart';
+import 'common/UserModel.dart';
+
+//void main() => Global.init().then((e) => runApp(MyApp()));
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Global.init().then((e) => runApp(MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return MultiProvider(
+      providers: <SingleChildCloneableWidget>[
+        ChangeNotifierProvider.value(value: ThemeModel()),
+        ChangeNotifierProvider.value(value: LocaleModel()),
+        ChangeNotifierProvider.value(value: UserModel()),
+      ],
+      child: Consumer2<ThemeModel, LocaleModel>(builder:
+          (BuildContext context, themeModel, localeModel, Widget child) {
+        return MaterialApp(
+          theme: ThemeData(
+            primaryColor: themeModel.theme,
+          ),
+          onGenerateTitle: (context) {
+            return GmLocalizations.of(context).title;
+          },
+          home: HomeRoute(),
+          locale: localeModel.getLocale(),
+          //我们只支持美国英语和中文简体
+          supportedLocales: [
+            const Locale('en', 'US'),
+            const Locale('zh', 'CN'),
+          ],
+          localizationsDelegates: [
+            // 本地化的代理类
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GmLocalizationsDelegate()
+          ],
+          localeResolutionCallback:
+              (Locale _locale, Iterable<Locale> supportedLocales) {
+            if (localeModel.getLocale() != null) {
+              //如果已经选定语言，则不跟随系统
+              return localeModel.getLocale();
+            } else {
+              Locale locale;
+              //APP语言跟随系统语言，如果系统语言不是中文简体或美国英语，
+              //则默认使用美国英语
+              if (supportedLocales.contains(_locale)) {
+                locale = _locale;
+              } else {
+                locale = Locale('en', 'US');
+              }
+              return locale;
+            }
+          },
+          // 注册命名路由表
+          routes: <String, WidgetBuilder>{
+            "themes": (context) => ThemeChangeRoute(),
+            "language": (context) => LanguageRoute(),
+            "login": (context) => LoginRoute(),
+          },
+        );
+      }),
     );
   }
 }

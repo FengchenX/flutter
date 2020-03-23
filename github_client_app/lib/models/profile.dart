@@ -1,45 +1,19 @@
-/// user : "$user"
-/// token : ""
-/// theme : 5678
-/// cache : "$cacheConfig"
-/// lastLogin : ""
-/// locale : ""
+import 'package:json_annotation/json_annotation.dart';
+import "user.dart";
+import "cacheConfig.dart";
+part 'profile.g.dart';
 
+@JsonSerializable()
 class Profile {
-  String _user;
-  String _token;
-  int _theme;
-  String _cache;
-  String _lastLogin;
-  String _locale;
+    Profile();
 
-  String get user => _user;
-  String get token => _token;
-  int get theme => _theme;
-  String get cache => _cache;
-  String get lastLogin => _lastLogin;
-  String get locale => _locale;
-
-  Profile(this._user, this._token, this._theme, this._cache, this._lastLogin, this._locale);
-
-  Profile.map(dynamic obj) {
-    this._user = obj["user"];
-    this._token = obj["token"];
-    this._theme = obj["theme"];
-    this._cache = obj["cache"];
-    this._lastLogin = obj["lastLogin"];
-    this._locale = obj["locale"];
-  }
-
-  Map<String, dynamic> toMap() {
-    var map = new Map<String, dynamic>();
-    map["user"] = _user;
-    map["token"] = _token;
-    map["theme"] = _theme;
-    map["cache"] = _cache;
-    map["lastLogin"] = _lastLogin;
-    map["locale"] = _locale;
-    return map;
-  }
-
+    User user;
+    String token;
+    num theme;
+    CacheConfig cache;
+    String lastLogin;//最后一次注销登录的用户名
+    String locale;
+    
+    factory Profile.fromJson(Map<String,dynamic> json) => _$ProfileFromJson(json);
+    Map<String, dynamic> toJson() => _$ProfileToJson(this);
 }

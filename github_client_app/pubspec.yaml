@@ -1,4 +1,4 @@
-name: githubclientapp
+name: github_client_app
 description: A new Flutter application.
 
 # The following defines the version and build number for your application.
@@ -14,26 +14,41 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: "2.7.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  #国际化
+  flutter_localizations:
+      sdk: flutter
+  shared_preferences: ^0.5.4+5
+  #网络请求
+  dio: ^3.0.4
+  #资源共享
+  provider: ^3.2.0
+  #UI库
+  flukit: ^1.0.2
+  #Widget now uses builders for the placeholder and error widget and uses sqflite for cache management
+  cached_network_image: ^2.0.0
+
+  fluttertoast: ^3.1.3
+  loading: ^1.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  json_annotation: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
+  #json序列化
+  build_runner: ^1.0.0
+  json_model: ^0.0.2
+  json_serializable: ^2.0.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-  build_runner: ^1.0.0
-  json_serializable: ^2.0.0
 
 # The following section is specific to Flutter.
 flutter:
@@ -44,8 +59,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+    - imgs/avatar-default.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -59,12 +74,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: 'myIcon'
+      fonts:
+        - asset: fonts/iconfont.ttf
+#         - asset: fonts/Schyler-Italic.ttf
+#           style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
