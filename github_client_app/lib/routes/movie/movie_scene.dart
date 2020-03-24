@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:github_client_app/common/screen.dart';
 import 'package:github_client_app/common/ty_color.dart';
@@ -19,10 +18,10 @@ class MovieSceneState extends State<MovieScene> {
       body: GridView.builder(
           padding: EdgeInsets.fromLTRB(10, Screen.topSafeHeight, 10, 10),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.03,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
+            crossAxisCount: 2,
+            childAspectRatio: 1.03,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
           ),
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
@@ -32,11 +31,10 @@ class MovieSceneState extends State<MovieScene> {
             }
             if (index == list.length - 1) {
 //              _get();
-                // 获取数据
+              // 获取数据
             }
             return buildMovieItem(list[index]);
-          }
-      ),
+          }),
     );
   }
 
@@ -106,10 +104,8 @@ class MovieSceneState extends State<MovieScene> {
       ),
       onTap: () {
 //        AppNavigator.pushVideoDetail(context, elem['video_id']);
-          print('click');
+        print('click');
       },
     );
   }
 }
-
-
