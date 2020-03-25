@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fengapp/model/novel.dart';
+import 'package:fengapp/models/novel.dart';
 import 'package:fengapp/widget/novel_cover_image.dart';
 import 'package:fengapp/app/app_navigator.dart';
 

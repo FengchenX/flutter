@@ -1,4 +1,4 @@
-import 'package:fengapp/model/novel.dart';
+import 'package:fengapp/models/novel.dart';
 
 class HomeModule {
   String id;

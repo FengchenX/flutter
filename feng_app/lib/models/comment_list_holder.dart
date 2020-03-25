@@ -1,4 +1,4 @@
-import 'package:fengapp/model/comic_comment.dart';
+import 'package:fengapp/models/comic_comment.dart';
 
 class CommentListHolder {
   List<ComicComment> commentList;

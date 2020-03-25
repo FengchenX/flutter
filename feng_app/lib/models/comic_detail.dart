@@ -1,4 +1,4 @@
-import 'package:fengapp/model/comic_block.dart';
+import 'package:fengapp/models/comic_block.dart';
 
 class ComicDetail {
   String detail;
