@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:github_client_app/common/screen.dart';
 import 'package:github_client_app/common/ty_color.dart';
+import 'package:github_client_app/models/movie.dart';
 
 class MovieScene extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class MovieSceneState extends State<MovieScene> {
     );
   }
 
-  Widget buildMovieItem(Map elem) {
+  Widget buildMovieItem(Movie m) {
     return GestureDetector(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
@@ -47,12 +48,12 @@ class MovieSceneState extends State<MovieScene> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.network(elem['thumb'], fit: BoxFit.cover),
+              Image.network(m.thumb, fit: BoxFit.cover),
               SizedBox(height: 4),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
-                  elem['name'],
+                  m.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

@@ -1,0 +1,10 @@
+{
+    "id": "1",
+    "name": "测试电影",
+    "creator": "userid",
+    "create_at": "2020-03-25 10:16:00",
+    "thumb": "http://qq.com",
+    "describe": "这是一个测试电影",
+    "year": 2019,
+    "video_id": "video_id"
+}
