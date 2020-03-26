@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fengapp/models/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,5 +26,14 @@ class HttpUtil {
     // 设置用户token (可能为null, 代表未登录)
   }
 
-  Future<Movie> getMovies()
+  Future<Movie> getMovies(PageFilter filter) async {
+    var r = await dio.get(
+      "/movies",
+      options: _options.merge(headers: {
+//          HttpHeaders.authorizationHeader: session
+      }, extra: {
+        "noCache": true
+      }),
+    );
+  }
 }
