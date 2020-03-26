@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:fengapp/public.dart';
-import 'package:fengapp/utility/http.dart';
+import 'package:fengapp/models/index.dart';
 
 class MovieScene extends StatefulWidget {
   @override
@@ -67,7 +66,7 @@ class MovieSceneState extends State<MovieScene> {
     );
   }
 
-  Widget buildMovieItem(Map elem) {
+  Widget buildMovieItem(Movie m) {
     return GestureDetector(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
@@ -76,12 +75,12 @@ class MovieSceneState extends State<MovieScene> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.network(elem['thumb'], fit: BoxFit.cover),
+              Image.network(m.thumb, fit: BoxFit.cover),
               SizedBox(height: 4),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
-                  elem['name'],
+                  m.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -132,7 +131,7 @@ class MovieSceneState extends State<MovieScene> {
         ),
       ),
       onTap: () {
-        AppNavigator.pushVideoDetail(context, elem['video_id']);
+        AppNavigator.pushVideoDetail(context, m.video_id);
       },
     );
   }
