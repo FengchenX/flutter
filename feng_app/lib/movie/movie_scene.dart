@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fengapp/public.dart';
 import 'package:fengapp/models/index.dart';
+import 'package:fengapp/movie/http_util.dart';
 
 class MovieScene extends StatefulWidget {
   @override
@@ -10,33 +11,34 @@ class MovieScene extends StatefulWidget {
 }
 
 class MovieSceneState extends State<MovieScene> {
-  MovieSceneState() {
-    _get();
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    cli = MovieHttpUtil(context);
+    _get();
   }
 
   var list = List();
   int page = 1;
-
+  MovieHttpUtil cli;
+  PageFilter filter;
   _get() async {
-    var httpClient = new HttpClient();
-    var uri = Uri.http('172.17.165.97:8080', '/movies');
-    var request = await httpClient.getUrl(uri);
-    var response = await request.close();
-    var responseBody = await response.transform(utf8.decoder).join();
-    Map<String, dynamic> data = json.decode(responseBody);
+//    var httpClient = new HttpClient();
+//    var uri = Uri.http('172.17.165.97:8080', '/movies');
+//    var request = await httpClient.getUrl(uri);
+//    var response = await request.close();
+//    var responseBody = await response.transform(utf8.decoder).join();
+//    Map<String, dynamic> data = json.decode(responseBody);
+
+    GetMovies getmovies = await cli.getMovies(filter);
 
     if (!mounted) {
       return;
     }
 
     setState(() {
-      list.addAll(data['data']['movies']);
+      list.addAll(getmovies.movies);
     });
   }
 

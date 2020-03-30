@@ -29,6 +29,6 @@ class MovieHttpUtil extends HttpUtil {
       }),
     );
 
-    r.data["data"];
+    return GetMovies.fromJson(r.data["data"]);
   }
 }
