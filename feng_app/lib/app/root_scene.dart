@@ -109,7 +109,7 @@ class RootSceneState extends State<RootScene> {
           children: <Widget>[
 //            ComicHomeScene(),
             VideoScene(),
-//            MovieScene(),
+            MovieScene(),
 //            HomeScene(),
 //            MeScene(),
           ],

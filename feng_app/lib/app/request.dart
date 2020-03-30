@@ -53,7 +53,7 @@ class Request {
       baseUrl: "http://192.168.43.131:8080",
       connectTimeout: 10000,
       receiveTimeout: 10000,
-      contentType: ContentType.json,
+      contentType: ContentType.json.toString(),
     );
     var dio = Dio(options);
     dio.interceptors.add(CacheInterceptor(dio));

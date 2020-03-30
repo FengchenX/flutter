@@ -17,6 +17,7 @@ class MovieSceneState extends State<MovieScene> {
     super.initState();
     cli = MovieHttpUtil(context);
     _get();
+    print("initState");
   }
 
   var list = List();
@@ -56,7 +57,10 @@ class MovieSceneState extends State<MovieScene> {
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
+          print('builder');
+
           if (list.length == 0) {
+//            sleep(Duration(seconds: 2));
             return null;
           }
           if (index == list.length - 1) {

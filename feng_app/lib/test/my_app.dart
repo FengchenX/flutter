@@ -1,3 +1,4 @@
+import 'package:fengapp/utility/http_util.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -46,7 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       );
 
-  void _incrementCounter() {
+  void _incrementCounter() async {
+    var a = HttpUtil();
+    var r = await a.dio.get("/movies");
+    print(r.data);
+
     setState(() {
       _counter++;
     });
@@ -76,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 //导航到新路由
 //                Navigator.push(context, route);
+                _incrementCounter();
                 Navigator.pushNamed(context, 'new_page', arguments: "hi");
               },
             )
