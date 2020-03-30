@@ -48,9 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
       );
 
   void _incrementCounter() async {
-    var a = HttpUtil();
-    var r = await a.dio.get("/movies");
-    print(r.data);
+    var a = new HttpUtil();
+
+    try {
+      var r = await a.dio.get("/movies");
+      print(r.data);
+    } catch (e) {
+      print('***********************************');
+      print(e);
+    }
 
     setState(() {
       _counter++;

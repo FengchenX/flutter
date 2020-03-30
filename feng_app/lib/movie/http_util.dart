@@ -20,16 +20,19 @@ class MovieHttpUtil extends HttpUtil {
   }
 
   Future<GetMovies> getMovies(PageFilter filter) async {
-    var r = await dio.get(
-      "/movies",
-//      options: options.merge(
-////          headers:
-////          {
-////            HttpHeaders.authorizationHeader: session;
-////          },
-//          extra: {"noCache": true}),
-    );
+    try {
+      var r = await dio.get(
+        "/movies",
+        options: options.merge(headers: {
+//            HttpHeaders.authorizationHeader: session;
+        }, extra: {
+          "noCache": true
+        }),
+      );
 
-    return GetMovies.fromJson(r.data["data"]);
+      return GetMovies.fromJson(r.data["data"]);
+    } catch (e) {
+      print(e);
+    }
   }
 }

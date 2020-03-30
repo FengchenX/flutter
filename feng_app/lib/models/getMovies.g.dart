@@ -9,7 +9,10 @@ part of 'getMovies.dart';
 GetMovies _$GetMoviesFromJson(Map<String, dynamic> json) {
   return GetMovies()
     ..total = json['total'] as num
-    ..movies = json['movies'] as List<Movie>;
+    ..movies = (json['movies'] as List)
+        ?.map(
+            (e) => e == null ? null : Movie.fromJson(e as Map<String, dynamic>))
+        ?.toList();
 }
 
 Map<String, dynamic> _$GetMoviesToJson(GetMovies instance) =>

@@ -10,7 +10,7 @@ class HttpUtil {
   BuildContext context;
   Options options;
   Dio dio = new Dio(BaseOptions(
-    baseUrl: 'http:192.168.1.68:8080',
+    baseUrl: 'http://192.168.1.68:8080',
 //    headers: {},
   ));
 

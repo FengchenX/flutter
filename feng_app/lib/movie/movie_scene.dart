@@ -32,12 +32,19 @@ class MovieSceneState extends State<MovieScene> {
 //    var responseBody = await response.transform(utf8.decoder).join();
 //    Map<String, dynamic> data = json.decode(responseBody);
 
-    GetMovies getmovies = await cli.getMovies(filter);
+    GetMovies getmovies;
+    try {
+      getmovies = await cli.getMovies(filter);
+    } catch (e) {
+      print('****************************************');
+      print(e);
+    }
 
     if (!mounted) {
       return;
     }
 
+    print(getmovies);
     setState(() {
       list.addAll(getmovies.movies);
     });
@@ -60,8 +67,8 @@ class MovieSceneState extends State<MovieScene> {
           print('builder');
 
           if (list.length == 0) {
-//            sleep(Duration(seconds: 2));
-            return null;
+            sleep(Duration(seconds: 3));
+//            return null;
           }
           if (index == list.length - 1) {
             _get();
