@@ -40,7 +40,6 @@ class MovieSceneState extends State<MovieScene> {
     try {
       getmovies = await cli.getMovies(filter);
     } catch (e) {
-      print('****************************************');
       print(e);
     }
     requesting = false;
@@ -56,8 +55,8 @@ class MovieSceneState extends State<MovieScene> {
 
   @override
   Widget build(BuildContext context) {
-    print('**********************');
     if (!requesting) {
+      print('**********************');
       return Scaffold(
         body: GridView.builder(
           padding: EdgeInsets.fromLTRB(10, Screen.topSafeHeight, 10, 10),
@@ -84,6 +83,7 @@ class MovieSceneState extends State<MovieScene> {
         ),
       );
     } else {
+      print('#######################');
       return Scaffold();
     }
   }
