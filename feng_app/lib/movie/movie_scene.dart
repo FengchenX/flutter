@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:fengapp/widget/loading_indicator.dart';
+import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:fengapp/public.dart';
 import 'package:fengapp/models/index.dart';
@@ -24,6 +26,7 @@ class MovieSceneState extends State<MovieScene> {
   int page = 1;
   MovieHttpUtil cli;
   PageFilter filter;
+  bool requesting = false;
   _get() async {
 //    var httpClient = new HttpClient();
 //    var uri = Uri.http('172.17.165.97:8080', '/movies');
@@ -32,6 +35,7 @@ class MovieSceneState extends State<MovieScene> {
 //    var responseBody = await response.transform(utf8.decoder).join();
 //    Map<String, dynamic> data = json.decode(responseBody);
 
+    requesting = true;
     GetMovies getmovies;
     try {
       getmovies = await cli.getMovies(filter);
@@ -39,7 +43,7 @@ class MovieSceneState extends State<MovieScene> {
       print('****************************************');
       print(e);
     }
-
+    requesting = false;
     if (!mounted) {
       return;
     }
@@ -52,31 +56,36 @@ class MovieSceneState extends State<MovieScene> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GridView.builder(
-        padding: EdgeInsets.fromLTRB(10, Screen.topSafeHeight, 10, 10),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.03,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-        ),
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index) {
-          print('builder');
+    print('**********************');
+    if (!requesting) {
+      return Scaffold(
+        body: GridView.builder(
+          padding: EdgeInsets.fromLTRB(10, Screen.topSafeHeight, 10, 10),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1.03,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+          ),
+          shrinkWrap: true,
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            print('builder');
 
-          if (list.length == 0) {
-            sleep(Duration(seconds: 3));
+            if (list.length == 0) {
+              sleep(Duration(seconds: 3));
 //            return null;
-          }
-          if (index == list.length - 1) {
-            _get();
-          }
-          return buildMovieItem(list[index]);
-        },
-      ),
-    );
+            }
+            if (index == list.length - 1) {
+              _get();
+            }
+            return buildMovieItem(list[index]);
+          },
+        ),
+      );
+    } else {
+      return Scaffold();
+    }
   }
 
   Widget buildMovieItem(Movie m) {
