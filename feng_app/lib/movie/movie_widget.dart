@@ -31,7 +31,7 @@ class MovieWidgetState extends State<MovieWidget> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(widget.url)
+    _controller = VideoPlayerController.network(widget.url)
       ..initialize()
       ..setLooping(true).then((_) {
         if (MovieDetailScene.firstInitTimes == 1) {
