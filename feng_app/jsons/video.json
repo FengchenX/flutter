@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "name": "video1",
+  "url": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+  "describe": "测试视频",
+  "thumb": "http://logo.png",
+  "creator": "123",
+  "create_at": "2020-03-31 19:28:00"
+}
