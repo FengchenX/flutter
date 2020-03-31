@@ -2,7 +2,7 @@ import 'package:fengapp/video/video_detail_scene.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:fengapp/public.dart';
-import 'package:fengapp/video/video_widget.dart';
+import 'package:fengapp/movie/movie_widget.dart';
 
 class MovieDetailScene extends StatefulWidget {
   static int firstInitTimes = 1;
@@ -50,13 +50,13 @@ class MovieDetailState extends State<MovieDetailScene> {
   Widget buildVideoItem(int position) {
     print(position.toString());
     if (position % 2 == 0) {
-      return VideoWidget(
+      return MovieWidget(
         "img/video_1.mp4",
         previewImgUrl: 'img/img_video_1.png',
         positionTag: position,
       );
     } else {
-      return VideoWidget(
+      return MovieWidget(
         "img/video_2.mp4",
         previewImgUrl: 'img/img_video_2.png',
         positionTag: position,
