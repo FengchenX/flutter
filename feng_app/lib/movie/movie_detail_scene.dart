@@ -18,7 +18,6 @@ class MovieDetailScene extends StatefulWidget {
 }
 
 class MovieDetailState extends State<MovieDetailScene> {
-  SwiperController _controller = SwiperController();
   Movie m;
 
   @override
@@ -30,14 +29,6 @@ class MovieDetailState extends State<MovieDetailScene> {
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
-      if (_controller.page.floor() == _controller.page) {
-        eventBus.emit(
-            EventVideoPlayPosition + _controller.page.floor().toString(),
-            _controller.page.floor());
-      }
-    });
-
     m = this.widget.m;
   }
 

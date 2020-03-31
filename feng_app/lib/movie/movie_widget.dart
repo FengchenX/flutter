@@ -11,13 +11,11 @@ class MovieWidget extends StatefulWidget {
   final String previewImgUrl; //预览图片的地址
   final bool showProgressBar; //是否显示进度条
   final bool showProgressText; //是否显示进度文本
-  final int positionTag;
   MovieWidget(this.url,
       {Key key,
       this.previewImgUrl: '',
       this.showProgressBar = true,
-      this.showProgressText = true,
-      this.positionTag})
+      this.showProgressText = true})
       : super(key: key);
 
   @override
@@ -34,20 +32,10 @@ class MovieWidgetState extends State<MovieWidget> {
   @override
   void initState() {
     super.initState();
-    eventBus.on(EventVideoPlayPosition + widget.positionTag.toString(), (arg) {
-      if (arg == widget.positionTag) {
-        _controller.play();
-        videoPrepared = true;
-      } else {
-        _controller.pause();
-      }
-      setState(() {});
-    });
-
     _controller = VideoPlayerController.asset(widget.url)
       ..initialize()
       ..setLooping(true).then((_) {
-        if (widget.positionTag == 0 && MovieDetailScene.firstInitTimes == 1) {
+        if (MovieDetailScene.firstInitTimes == 1) {
           MovieDetailScene.firstInitTimes = 2;
           _controller.play();
           videoPrepared = true;
@@ -59,7 +47,6 @@ class MovieWidgetState extends State<MovieWidget> {
   @override
   void dispose() {
     super.dispose();
-    eventBus.off(EventVideoPlayPosition + widget.positionTag.toString());
     _controller.dispose(); //释放播放器资源
   }
 
