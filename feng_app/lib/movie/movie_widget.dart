@@ -31,6 +31,7 @@ class MovieWidgetState extends State<MovieWidget> {
   @override
   void initState() {
     super.initState();
+    print(widget.url);
     _controller = VideoPlayerController.network(widget.url)
       ..initialize()
       ..setLooping(true).then((_) {

@@ -35,7 +35,7 @@ class MovieDetailState extends State<MovieDetailScene> {
   @override
   Widget build(BuildContext context) {
     return MovieWidget(
-      "img/video_2.mp4",
+      'https://media.w3.org/2010/05/sintel/trailer.mp4',
       previewImgUrl: 'img/img_video_2.png',
     );
   }
