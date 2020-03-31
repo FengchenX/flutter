@@ -1,7 +1,4 @@
-import 'package:fengapp/video/video_detail_scene.dart';
-import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
-import 'package:fengapp/public.dart';
 import 'package:fengapp/movie/movie_widget.dart';
 import 'package:fengapp/models/index.dart';
 
@@ -23,7 +20,7 @@ class MovieDetailState extends State<MovieDetailScene> {
   @override
   void dispose() {
     super.dispose();
-    VideoDetailScene.firstInitTimes = 1;
+    MovieDetailScene.firstInitTimes = 1;
   }
 
   @override
