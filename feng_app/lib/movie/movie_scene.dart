@@ -70,10 +70,8 @@ class MovieSceneState extends State<MovieScene> {
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) {
             print('builder');
-
             if (list.length == 0) {
-              sleep(Duration(seconds: 3));
-//            return null;
+              return null;
             }
             if (index == list.length - 1) {
               _get();
