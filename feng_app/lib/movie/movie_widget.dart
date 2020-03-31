@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:video_player/video_player.dart';
-
 import 'movie_detail_scene.dart';
 
 class MovieWidget extends StatefulWidget {
