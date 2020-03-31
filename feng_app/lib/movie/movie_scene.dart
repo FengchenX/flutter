@@ -151,7 +151,7 @@ class MovieSceneState extends State<MovieScene> {
         ),
       ),
       onTap: () {
-        AppNavigator.pushVideoDetail(context, m.video_id);
+        AppNavigator.pushMovieDetail(context, m);
       },
     );
   }

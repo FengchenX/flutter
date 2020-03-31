@@ -3,9 +3,13 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:fengapp/public.dart';
 import 'package:fengapp/movie/movie_widget.dart';
+import 'package:fengapp/models/index.dart';
 
 class MovieDetailScene extends StatefulWidget {
   static int firstInitTimes = 1;
+
+  final Movie m;
+  MovieDetailScene(this.m);
 
   @override
   State<StatefulWidget> createState() {
@@ -15,6 +19,7 @@ class MovieDetailScene extends StatefulWidget {
 
 class MovieDetailState extends State<MovieDetailScene> {
   SwiperController _controller = SwiperController();
+  Movie m;
 
   @override
   void dispose() {
@@ -32,35 +37,15 @@ class MovieDetailState extends State<MovieDetailScene> {
             _controller.page.floor());
       }
     });
+
+    m = this.widget.m;
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = List.generate(20, (i) => buildVideoItem(i));
-    return Scaffold(
-        body: Swiper(
-      autoStart: false,
-      circular: false,
-      direction: Axis.vertical,
-      children: children,
-      controller: _controller,
-    ));
-  }
-
-  Widget buildVideoItem(int position) {
-    print(position.toString());
-    if (position % 2 == 0) {
-      return MovieWidget(
-        "img/video_1.mp4",
-        previewImgUrl: 'img/img_video_1.png',
-        positionTag: position,
-      );
-    } else {
-      return MovieWidget(
-        "img/video_2.mp4",
-        previewImgUrl: 'img/img_video_2.png',
-        positionTag: position,
-      );
-    }
+    return MovieWidget(
+      "img/video_2.mp4",
+      previewImgUrl: 'img/img_video_2.png',
+    );
   }
 }
