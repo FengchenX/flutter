@@ -1,3 +1,4 @@
+import 'package:fengapp/movie/movie_detail_scene.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fengapp/comic_detail/comic_detail_scene.dart';
@@ -33,6 +34,10 @@ class AppNavigator {
 
   static pushVideoDetail(BuildContext context, String url) {
     AppNavigator.push(context, VideoDetailScene());
+  }
+
+  static pushMovieDetail(BuildContext context, String url) {
+    AppNavigator.push(context, MovieDetailScene());
   }
 
   static pushLogin(BuildContext context) {
