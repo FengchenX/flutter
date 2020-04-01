@@ -30,6 +30,7 @@ class MovieDetailState extends State<MovieDetailScene> {
     super.initState();
     m = this.widget.m;
     cli = MovieHttpUtil(context);
+    _get();
   }
 
   MovieHttpUtil cli;
