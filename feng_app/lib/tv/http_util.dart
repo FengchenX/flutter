@@ -19,10 +19,10 @@ class TVHttpUtil extends HttpUtil {
     // 设置用户token (可能为null, 代表未登录)
   }
 
-  Future<GetMovies> getTVs(PageFilter filter) async {
+  Future<GetTVs> getTVs(PageFilter filter) async {
     try {
       var r = await dio.get(
-        "/movies",
+        "/tvs",
         options: options.merge(headers: {
 //            HttpHeaders.authorizationHeader: session;
         }, extra: {
@@ -30,7 +30,7 @@ class TVHttpUtil extends HttpUtil {
         }),
       );
 
-      return GetMovies.fromJson(r.data["data"]);
+      return GetTVs.fromJson(r.data["data"]);
     } catch (e) {
       print(e);
     }
