@@ -5,12 +5,12 @@ import 'package:share/share.dart';
 import 'package:video_player/video_player.dart';
 import 'tv_detail_scene.dart';
 
-class MovieWidget extends StatefulWidget {
+class TVWidget extends StatefulWidget {
   final String url;
   final String previewImgUrl; //预览图片的地址
   final bool showProgressBar; //是否显示进度条
   final bool showProgressText; //是否显示进度文本
-  MovieWidget(this.url,
+  TVWidget(this.url,
       {Key key,
       this.previewImgUrl: '',
       this.showProgressBar = true,
@@ -19,11 +19,11 @@ class MovieWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return MovieWidgetState();
+    return TVWidgetState();
   }
 }
 
-class MovieWidgetState extends State<MovieWidget> {
+class TVWidgetState extends State<TVWidget> {
   VideoPlayerController _controller;
   bool _hideActionButton = true;
   bool videoPrepared = false; //视频是否初始化
@@ -35,8 +35,8 @@ class MovieWidgetState extends State<MovieWidget> {
     _controller = VideoPlayerController.network(widget.url)
       ..initialize()
       ..setLooping(true).then((_) {
-        if (MovieDetailScene.firstInitTimes == 1) {
-          MovieDetailScene.firstInitTimes = 2;
+        if (TVDetailScene.firstInitTimes == 1) {
+          TVDetailScene.firstInitTimes = 2;
           _controller.play();
           videoPrepared = true;
         }

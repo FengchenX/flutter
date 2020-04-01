@@ -1,28 +1,28 @@
 import 'package:fengapp/movie/http_util.dart';
 import 'package:flutter/material.dart';
-import 'package:fengapp/movie/movie_widget.dart';
+import 'package:fengapp/tv/tv_widget.dart';
 import 'package:fengapp/models/index.dart';
 
-class MovieDetailScene extends StatefulWidget {
+class TVDetailScene extends StatefulWidget {
   static int firstInitTimes = 1;
 
   final Movie m;
-  MovieDetailScene(this.m);
+  TVDetailScene(this.m);
 
   @override
   State<StatefulWidget> createState() {
-    return MovieDetailState();
+    return TVDetailState();
   }
 }
 
-class MovieDetailState extends State<MovieDetailScene> {
+class TVDetailState extends State<TVDetailScene> {
   Movie m;
   Video v;
 
   @override
   void dispose() {
     super.dispose();
-    MovieDetailScene.firstInitTimes = 1;
+    TVDetailScene.firstInitTimes = 1;
   }
 
   @override
@@ -54,7 +54,7 @@ class MovieDetailState extends State<MovieDetailScene> {
 
   @override
   Widget build(BuildContext context) {
-    return MovieWidget(
+    return TVWidget(
       v.url,
       previewImgUrl: v.thumb,
     );

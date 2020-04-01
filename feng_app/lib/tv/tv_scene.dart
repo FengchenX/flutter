@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:fengapp/tv/http_util.dart';
 import 'package:fengapp/widget/loading_indicator.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
@@ -7,24 +8,23 @@ import 'package:fengapp/public.dart';
 import 'package:fengapp/models/index.dart';
 import 'package:fengapp/movie/http_util.dart';
 
-class MovieScene extends StatefulWidget {
+class TVScene extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => MovieSceneState();
+  State<StatefulWidget> createState() => TVSceneState();
 }
 
-class MovieSceneState extends State<MovieScene> {
+class TVSceneState extends State<TVScene> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    cli = MovieHttpUtil(context);
+    cli = TVHttpUtil(context);
     _get();
     print("initState");
   }
 
   var list = List();
   int page = 1;
-  MovieHttpUtil cli;
+  TVHttpUtil cli;
   PageFilter filter;
   bool requesting = false;
   _get() async {
@@ -36,9 +36,9 @@ class MovieSceneState extends State<MovieScene> {
 //    Map<String, dynamic> data = json.decode(responseBody);
 
     requesting = true;
-    GetMovies getmovies;
+    GetTVs gettvs;
     try {
-      getmovies = await cli.getMovies(filter);
+      gettvs = await cli.getTVs(filter);
     } catch (e) {
       print(e);
     }
@@ -47,9 +47,9 @@ class MovieSceneState extends State<MovieScene> {
       return;
     }
 
-    print(getmovies);
+    print(gettvs);
     setState(() {
-      list.addAll(getmovies.movies);
+      list.addAll(gettvs.tvs);
     });
   }
 
@@ -68,7 +68,6 @@ class MovieSceneState extends State<MovieScene> {
           shrinkWrap: true,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            print('builder');
             if (list.length == 0) {
               return null;
             }
@@ -85,7 +84,7 @@ class MovieSceneState extends State<MovieScene> {
     }
   }
 
-  Widget buildMovieItem(Movie m) {
+  Widget buildMovieItem(Tv m) {
     return GestureDetector(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
@@ -150,7 +149,7 @@ class MovieSceneState extends State<MovieScene> {
         ),
       ),
       onTap: () {
-        AppNavigator.pushMovieDetail(context, m);
+//        AppNavigator.pushMovieDetail(context, m);
       },
     );
   }
