@@ -1,3 +1,4 @@
+import 'package:fengapp/movie/http_util.dart';
 import 'package:flutter/material.dart';
 import 'package:fengapp/movie/movie_widget.dart';
 import 'package:fengapp/models/index.dart';
@@ -16,6 +17,7 @@ class MovieDetailScene extends StatefulWidget {
 
 class MovieDetailState extends State<MovieDetailScene> {
   Movie m;
+  Video v;
 
   @override
   void dispose() {
@@ -27,12 +29,31 @@ class MovieDetailState extends State<MovieDetailScene> {
   void initState() {
     super.initState();
     m = this.widget.m;
+    cli = MovieHttpUtil(context);
+  }
+
+  MovieHttpUtil cli;
+  _get() async {
+    Video ret;
+    try {
+      ret = await cli.getVideo(m.video_id);
+    } catch (e) {
+      print(e);
+    }
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      v = ret;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MovieWidget(
-      'https://media.w3.org/2010/05/sintel/trailer.mp4',
+      v.url,
       previewImgUrl: 'img/img_video_2.png',
     );
   }
