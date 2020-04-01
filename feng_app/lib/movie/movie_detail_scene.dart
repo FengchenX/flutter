@@ -49,6 +49,7 @@ class MovieDetailState extends State<MovieDetailScene> {
     setState(() {
       v = ret;
     });
+    print(v);
   }
 
   @override

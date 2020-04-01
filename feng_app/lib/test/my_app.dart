@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
       var r = await a.dio.get("/movies");
       print(r.data);
     } catch (e) {
-      print('***********************************');
       print(e);
     }
 

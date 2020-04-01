@@ -56,7 +56,6 @@ class MovieSceneState extends State<MovieScene> {
   @override
   Widget build(BuildContext context) {
     if (!requesting) {
-      print('**********************');
       return Scaffold(
         body: GridView.builder(
           padding: EdgeInsets.fromLTRB(10, Screen.topSafeHeight, 10, 10),
