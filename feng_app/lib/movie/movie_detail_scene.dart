@@ -54,7 +54,7 @@ class MovieDetailState extends State<MovieDetailScene> {
   Widget build(BuildContext context) {
     return MovieWidget(
       v.url,
-      previewImgUrl: 'img/img_video_2.png',
+      previewImgUrl: v.thumb,
     );
   }
 }
