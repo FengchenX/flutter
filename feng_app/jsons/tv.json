@@ -1,0 +1,7 @@
+{
+  "id": "1",
+  "name": "测试tv",
+  "thumb": "http://logo.png",
+  "describe": "测试tv",
+  "videos": "$[]String"
+}
