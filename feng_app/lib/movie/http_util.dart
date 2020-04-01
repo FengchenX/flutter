@@ -35,4 +35,13 @@ class MovieHttpUtil extends HttpUtil {
       print(e);
     }
   }
+
+  Future<Video> getVideo(String id) async {
+    try {
+      var r = await dio.get("/videos/$id");
+      return Video.fromJson(r.data["data"]);
+    } catch (e) {
+      print(e);
+    }
+  }
 }
