@@ -1,4 +1,4 @@
-import 'package:fengapp/movie/http_util.dart';
+import 'package:fengapp/tv/http_util.dart';
 import 'package:flutter/material.dart';
 import 'package:fengapp/tv/tv_widget.dart';
 import 'package:fengapp/models/index.dart';
@@ -29,11 +29,11 @@ class TVDetailState extends State<TVDetailScene> {
   void initState() {
     super.initState();
     m = this.widget.m;
-    cli = MovieHttpUtil(context);
+    cli = TVHttpUtil(context);
     _get();
   }
 
-  MovieHttpUtil cli;
+  TVHttpUtil cli;
   _get() async {
     Video ret;
     try {
