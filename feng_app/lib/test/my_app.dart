@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "new_page": (context) => EchoRoute(),
         "/": (context) => MyHomePage(
-              title: 'Flutter Demo Home Page',
+              title: '樱桃小丸子',
             )
       },
 //      home: MyHomePage(),
@@ -67,38 +67,26 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Image.asset(name),
-                Text(
-                  'You have pushed the button this many times: ',
-                ),
-              ],
-            ),
-            Row(),
-
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            FlatButton(
-              child: Text('open new route'),
-              textColor: Colors.blue,
-              onPressed: () {
-                //导航到新路由
-//                Navigator.push(context, route);
-                _incrementCounter();
-                Navigator.pushNamed(context, 'new_page', arguments: "hi");
-              },
-            )
-          ],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
         ),
+        title: Text(
+          widget.title,
+        ),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Image.asset('img/yingtao.png'),
+              )
+            ],
+          ),
+          Row()
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
