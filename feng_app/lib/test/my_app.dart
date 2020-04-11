@@ -65,33 +65,44 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-        ),
-        title: Text(
-          widget.title,
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Image.asset('img/yingtao.png'),
-              )
-            ],
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+//        image: NetworkImage(
+//            'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+        image: AssetImage('img/tv_bg.jpg'),
+        fit: BoxFit.cover,
+      )),
+      child: Scaffold(
+        backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
+        appBar: AppBar(
+          backgroundColor: Colors.transparent, //把appbar的背景色改成透明
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
           ),
-          Row()
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+          title: Text(
+            widget.title,
+          ),
+          centerTitle: true,
+        ),
+        body: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+//                  child: Image.asset('img/yingtao.png'),
+                )
+              ],
+            ),
+            Row()
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: _incrementCounter,
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
