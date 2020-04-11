@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
         appBar: AppBar(
-          backgroundColor: Colors.transparent, //把appbar的背景色改成透明
+          backgroundColor: Color(0xA38494), //把appbar的背景色改成透明
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
