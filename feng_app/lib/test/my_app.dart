@@ -76,8 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent, //把appbar的背景色改成透明
           leading: IconButton(
-            icon: ImageIcon(
-              image: Image.asset("name"),
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Color(0xc4f8f5f5),
             ),
           ),
           title: Text(
