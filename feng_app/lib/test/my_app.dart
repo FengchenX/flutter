@@ -68,10 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-//        image: NetworkImage(
-//            'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
         image: AssetImage('img/tv_bg.jpg'),
-        fit: BoxFit.cover,
+        fit: BoxFit.fill,
       )),
       child: Scaffold(
         backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
