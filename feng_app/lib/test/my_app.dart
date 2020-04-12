@@ -91,9 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-//                  child: Image.asset('img/yingtao.png'),
+                Container(
+                  height: 222,
+                  width: 172,
+                  child: Image.asset(
+                    'img/yingtao.png',
+                    fit: BoxFit.fill,
+                  ),
+                  padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
                 )
               ],
             ),
