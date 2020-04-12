@@ -72,9 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
         fit: BoxFit.fill,
       )),
       child: Scaffold(
-        backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Color(0xA38494),
+          backgroundColor: Color(int.parse('A58494', radix: 16)).withAlpha(255),
           elevation: 0,
           leading: IconButton(
             icon: Icon(
@@ -89,25 +89,28 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  height: 222,
-                  width: 172,
-                  child: Image.asset(
-                    'img/yingtao.png',
-                    fit: BoxFit.fill,
+            Container(
+//              color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    height: 222,
+                    width: 172,
+                    child: Image.asset(
+                      'img/yingtao.png',
+                      fit: BoxFit.fill,
+                    ),
+                    padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
                   ),
-                  padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
-                ),
-                Container(
-                  height: 222,
-                  width: 234,
-                  child: Row(
-                    children: <Widget>[],
+                  Container(
+                    height: 222,
+                    width: 234,
+                    child: Row(
+                      children: <Widget>[Container()],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Row()
           ],
