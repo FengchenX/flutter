@@ -104,9 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 222,
                   width: 234,
                   child: Row(
-                    children: <Widget>[
-
-                    ],
+                    children: <Widget>[],
                   ),
                 ),
               ],
