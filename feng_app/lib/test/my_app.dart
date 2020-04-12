@@ -99,7 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.fill,
                   ),
                   padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
-                )
+                ),
+                Container(
+                  height: 222,
+                  width: 234,
+                  child: Row(
+                    children: <Widget>[
+
+                    ],
+                  ),
+                ),
               ],
             ),
             Row()
