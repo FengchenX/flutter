@@ -44,11 +44,13 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   List tabs = ["剧集", "简介"];
   TabController _tabController;
+  String title;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
+    title = widget.title;
   }
 
   Route<Object> get route => MaterialPageRoute(
@@ -59,130 +61,140 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    return myContainer(title, _tabController, tabs);
+  }
+
+  Widget myContainer(String title, TabController _tabController, List tabs) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
         image: AssetImage('img/tv_bg.jpg'),
         fit: BoxFit.fill,
       )),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Color(int.parse('A58494', radix: 16)).withAlpha(255),
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Color(0xc4f8f5f5),
-            ),
-          ),
-          title: Text(
-            widget.title,
-          ),
-          centerTitle: true,
-        ),
-        body: Column(
-          children: <Widget>[
-            Container(
-              color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    height: 222,
-                    width: 172,
-                    child: Image.asset(
-                      'img/yingtao.png',
-                      fit: BoxFit.fill,
-                    ),
-                    padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
+      child: myScaffold(title, _tabController, tabs),
+    );
+  }
+
+  myScaffold(String title, TabController _tabController, List tabs) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: myAppBar(title),
+      body: Column(
+        children: <Widget>[
+          Container(
+            color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  height: 222,
+                  width: 172,
+                  child: Image.asset(
+                    'img/yingtao.png',
+                    fit: BoxFit.fill,
                   ),
-                  Container(
-                    height: 222,
-                    width: 234,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 110,
-                          width: 234,
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 24),
+                  padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
+                ),
+                Container(
+                  height: 222,
+                  width: 234,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        height: 110,
+                        width: 234,
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(left: 24),
+                                ),
+                                Text(
+                                  '9.2分',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 28.0,
                                   ),
-                                  Text(
-                                    '9.2分',
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(left: 24),
+                                ),
+                                Text('年份',
                                     textAlign: TextAlign.right,
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 28.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 24),
-                                  ),
-                                  Text('年份',
-                                      textAlign: TextAlign.right,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 22.0)),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 12),
-                                  ),
-                                  Text(
-                                    '2003',
+                                        color: Colors.white, fontSize: 22.0)),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 12),
+                                ),
+                                Text(
+                                  '2003',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 22.0),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.only(left: 24),
+                                ),
+                                Text('类型',
+                                    textAlign: TextAlign.right,
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 22.0),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 24),
-                                  ),
-                                  Text('类型',
-                                      textAlign: TextAlign.right,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 22.0)),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 12),
-                                  ),
-                                  Text(
-                                    '益智启蒙',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 22.0),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                        color: Colors.white, fontSize: 22.0)),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 12),
+                                ),
+                                Text(
+                                  '益智启蒙',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 22.0),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container(
-              height: 380,
-              child: TabBar(
-                  controller: _tabController,
-                  tabs: tabs.map((e) => Tab(text: e)).toList()),
-            )
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: null,
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
+          ),
+          Container(
+            height: 380,
+            child: TabBar(
+                controller: _tabController,
+                tabs: tabs.map((e) => Tab(text: e)).toList()),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+  myAppBar(String title){
+    return AppBar(
+      backgroundColor: Color(int.parse('A58494', radix: 16)).withAlpha(255),
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: Color(0xc4f8f5f5),
         ),
       ),
+      title: Text(
+        widget.title,
+      ),
+      centerTitle: true,
     );
   }
 }
