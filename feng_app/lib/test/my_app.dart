@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fengapp/utility/http_util.dart';
 import 'package:flutter/material.dart';
 
@@ -38,29 +40,22 @@ class MyHomePage extends StatefulWidget {
   }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  List tabs = ["剧集", "简介"];
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: tabs.length, vsync: this);
+  }
 
   Route<Object> get route => MaterialPageRoute(
         builder: (context) {
           return NewRoute();
         },
       );
-
-  void _incrementCounter() async {
-    var a = new HttpUtil();
-
-    try {
-      var r = await a.dio.get("/movies");
-      print(r.data);
-    } catch (e) {
-      print(e);
-    }
-
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,19 +163,22 @@ class _MyHomePageState extends State<MyHomePage> {
                             ],
                           ),
                         ),
-                        Container(
-                        )
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            Row()
+            Container(
+              height: 380,
+              child: TabBar(
+                  controller: _tabController,
+                  tabs: tabs.map((e) => Tab(text: e)).toList()),
+            )
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
+          onPressed: null,
           tooltip: 'Increment',
           child: Icon(Icons.add),
         ),
