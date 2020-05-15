@@ -181,7 +181,8 @@ class _MyHomePageState extends State<MyHomePage>
       ),
     );
   }
-  myAppBar(String title){
+
+  myAppBar(String title) {
     return AppBar(
       backgroundColor: Color(int.parse('A58494', radix: 16)).withAlpha(255),
       elevation: 0,
