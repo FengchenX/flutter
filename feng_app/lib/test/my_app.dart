@@ -117,75 +117,7 @@ class _MyHomePageState extends State<MyHomePage>
       child: Row(
         children: <Widget>[
           thumbContainer(),
-          Container(
-            height: 222,
-            width: 234,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: 110,
-                  width: 234,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 24),
-                          ),
-                          Text(
-                            '9.2分',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 28.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 24),
-                          ),
-                          Text('年份',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 22.0)),
-                          Padding(
-                            padding: EdgeInsets.only(left: 12),
-                          ),
-                          Text(
-                            '2003',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 22.0),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 24),
-                          ),
-                          Text('类型',
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 22.0)),
-                          Padding(
-                            padding: EdgeInsets.only(left: 12),
-                          ),
-                          Text(
-                            '益智启蒙',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 22.0),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          detailContainer(),
         ],
       ),
     );
@@ -200,6 +132,90 @@ class _MyHomePageState extends State<MyHomePage>
         fit: BoxFit.fill,
       ),
       padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
+    );
+  }
+
+  detailContainer() {
+    return Container(
+      height: 222,
+      width: 234,
+      child: Column(
+        children: <Widget>[
+          detailContainer2(),
+        ],
+      ),
+    );
+  }
+
+  detailContainer2() {
+    return Container(
+      height: 110,
+      width: 234,
+      child: Column(
+        children: <Widget>[
+          scoreRow(),
+          yearRow(),
+          typeRow(),
+        ],
+      ),
+    );
+  }
+
+  scoreRow() {
+    return Row(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 24),
+        ),
+        Text(
+          '9.2分',
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+  yearRow() {
+    return Row(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 24),
+        ),
+        Text('年份',
+            textAlign: TextAlign.right,
+            style: TextStyle(color: Colors.white, fontSize: 22.0)),
+        Padding(
+          padding: EdgeInsets.only(left: 12),
+        ),
+        Text(
+          '2003',
+          style: TextStyle(color: Colors.white, fontSize: 22.0),
+        )
+      ],
+    );
+  }
+
+  typeRow() {
+    return Row(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 24),
+        ),
+        Text('类型',
+            textAlign: TextAlign.right,
+            style: TextStyle(color: Colors.white, fontSize: 22.0)),
+        Padding(
+          padding: EdgeInsets.only(left: 12),
+        ),
+        Text(
+          '益智启蒙',
+          style: TextStyle(color: Colors.white, fontSize: 22.0),
+        )
+      ],
     );
   }
 
