@@ -42,7 +42,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  List tabs = ["剧集", "简介"];
+  List tabs = ["剧集", "简介", "test"];
   TabController _tabController;
   String title;
 
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage>
     return myContainer(title, _tabController, tabs);
   }
 
-  Widget myContainer(String title, TabController _tabController, List tabs) {
+  myContainer(String title, TabController _tabController, List tabs) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -221,7 +221,8 @@ class _MyHomePageState extends State<MyHomePage>
 
   bottomContainer() {
     return Container(
-      height: 380,
+      height: 300,
+      width: 400,
       child: TabBar(
           controller: _tabController,
           tabs: tabs.map((e) => Tab(text: e)).toList()),
