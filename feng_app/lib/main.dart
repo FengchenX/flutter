@@ -7,9 +7,9 @@ import 'package:fengapp/app/app_scene.dart';
 void main() {
 //  runApp(AppScene());
   runApp(MyApp());
-  if (Platform.isAndroid) {
-    SystemUiOverlayStyle systemUiOverlayStyle =
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
+//  if (Platform.isAndroid) {
+//    SystemUiOverlayStyle systemUiOverlayStyle =
+//        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+//    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+//  }
 }
