@@ -42,7 +42,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  List tabs = ["剧集", "简介", "test"];
+  List tabs = ["剧集", "简介"];
   TabController _tabController;
   String title;
 
@@ -77,15 +77,9 @@ class _MyHomePageState extends State<MyHomePage>
 
   myScaffold(String title, TabController _tabController, List tabs) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: myAppBar(title),
-      body: myColumn(_tabController, tabs),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+        backgroundColor: Colors.transparent,
+        appBar: myAppBar(title),
+        body: myColumn(_tabController, tabs));
   }
 
   myAppBar(String title) {
@@ -221,12 +215,24 @@ class _MyHomePageState extends State<MyHomePage>
 
   bottomContainer() {
     return Container(
-      height: 300,
+      height: 350,
       width: 400,
-      child: TabBar(
-          controller: _tabController,
-          tabs: tabs.map((e) => Tab(text: e)).toList()),
+      child: myTabBar(),
     );
+//    return myTabBar();
+  }
+
+  myTabBar() {
+    return TabBar(
+        labelColor: Colors.black,
+        labelStyle: TextStyle(color: Colors.black, fontSize: 18),
+        labelPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        controller: _tabController,
+        tabs: tabs
+            .map((e) => Tab(
+                  text: e,
+                ))
+            .toList());
   }
 }
 
