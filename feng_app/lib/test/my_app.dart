@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:fengapp/utility/http_util.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -107,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   topContainer() {
     return Container(
-      color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
+//      color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
       child: Row(
         children: <Widget>[
           thumbContainer(),
@@ -119,13 +116,13 @@ class _MyHomePageState extends State<MyHomePage>
 
   thumbContainer() {
     return Container(
-      height: 222,
+      height: 243,
       width: 172,
       child: Image.asset(
         'img/yingtao.png',
         fit: BoxFit.fill,
       ),
-      padding: EdgeInsets.fromLTRB(18, 0, 0, 12),
+      padding: EdgeInsets.fromLTRB(15, 12, 2, 0),
     );
   }
 
