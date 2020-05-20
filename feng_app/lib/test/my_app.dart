@@ -40,13 +40,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   List tabs = ["剧集", "简介"];
-  TabController _tabController;
   String title;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: tabs.length, vsync: this);
     title = widget.title;
   }
 
@@ -58,25 +56,25 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    return myContainer(title, _tabController, tabs);
+    return myContainer(title, tabs);
   }
 
-  myContainer(String title, TabController _tabController, List tabs) {
+  myContainer(String title, List tabs) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
         image: AssetImage('img/tv_bg.jpg'),
         fit: BoxFit.fill,
       )),
-      child: myScaffold(title, _tabController, tabs),
+      child: myScaffold(title, tabs),
     );
   }
 
-  myScaffold(String title, TabController _tabController, List tabs) {
+  myScaffold(String title, List tabs) {
     return Scaffold(
         backgroundColor: Colors.transparent,
         appBar: myAppBar(title),
-        body: myColumn(_tabController, tabs));
+        body: myColumn(tabs));
   }
 
   myAppBar(String title) {
@@ -96,15 +94,16 @@ class _MyHomePageState extends State<MyHomePage>
     );
   }
 
-  myColumn(TabController _tabController, List tabs) {
+  myColumn(List tabs) {
     return Column(
-      children: <Widget>[topContainer(), bottomContainer()],
+      children: <Widget>[topContainer(), bottomContainer(tabs)],
     );
   }
 
   topContainer() {
     return Container(
-//      color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
+      height: 257,
+      color: Color(int.parse('BD8E9C', radix: 16)).withAlpha(250),
       child: Row(
         children: <Widget>[
           thumbContainer(),
@@ -140,14 +139,14 @@ class _MyHomePageState extends State<MyHomePage>
 
   detailContainer2() {
     return Container(
-      height: 119,
+      height: 130,
       width: 234,
       padding: EdgeInsets.only(top: 18),
       child: Column(
         children: <Widget>[
           scoreRow(),
           yearRow(),
-//          typeRow(),
+          typeRow(),
         ],
       ),
     );
@@ -162,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage>
             '9.2分',
             textAlign: TextAlign.right,
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 28.0,
             ),
           ),
@@ -178,13 +177,13 @@ class _MyHomePageState extends State<MyHomePage>
           padding: EdgeInsets.only(left: 24, top: 5),
           child: Text('年份',
               textAlign: TextAlign.right,
-              style: TextStyle(color: Colors.black, fontSize: 22.0)),
+              style: TextStyle(color: Colors.white, fontSize: 22.0)),
         ),
         Padding(
           padding: EdgeInsets.only(left: 12, top: 9),
           child: Text(
             '2003',
-            style: TextStyle(color: Colors.black, fontSize: 22.0),
+            style: TextStyle(color: Colors.white, fontSize: 22.0),
           ),
         ),
       ],
@@ -195,42 +194,44 @@ class _MyHomePageState extends State<MyHomePage>
     return Row(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: 24, top: 5),
+          padding: EdgeInsets.only(left: 24, top: 10),
           child: Text('类型',
               textAlign: TextAlign.right,
               style: TextStyle(color: Colors.white, fontSize: 22.0)),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 12),
+          padding: EdgeInsets.only(left: 12, top: 10),
+          child: Text(
+            '益智启蒙',
+            style: TextStyle(color: Colors.white, fontSize: 22.0),
+          ),
         ),
-        Text(
-          '益智启蒙',
-          style: TextStyle(color: Colors.white, fontSize: 22.0),
-        )
       ],
     );
   }
 
-  bottomContainer() {
+  bottomContainer(List tabs) {
     return Container(
-      height: 350,
+      height: 418,
       width: 400,
-      child: myTabBar(),
+      alignment: Alignment.topLeft,
+//      child: bottomRow(_tabController, tabs),
+      child: bottomTabController(tabs),
     );
-//    return myTabBar();
   }
 
-  myTabBar() {
-    return TabBar(
-        labelColor: Colors.black,
-        labelStyle: TextStyle(color: Colors.black, fontSize: 18),
-        labelPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        controller: _tabController,
-        tabs: tabs
-            .map((e) => Tab(
-                  text: e,
-                ))
-            .toList());
+  bottomTabController(List tabs) {
+    return DefaultTabController(
+      length: tabs.length,
+      child: Scaffold(
+        appBar: TabBar(
+          tabs: tabs.map((e) {
+            return Tab(text: e);
+          }).toList(),
+        ),
+//        body: TabBarView(),
+      ),
+    );
   }
 }
 
