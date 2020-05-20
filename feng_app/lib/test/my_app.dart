@@ -140,13 +140,14 @@ class _MyHomePageState extends State<MyHomePage>
 
   detailContainer2() {
     return Container(
-      height: 110,
+      height: 119,
       width: 234,
+      padding: EdgeInsets.only(top: 18),
       child: Column(
         children: <Widget>[
           scoreRow(),
           yearRow(),
-          typeRow(),
+//          typeRow(),
         ],
       ),
     );
@@ -157,13 +158,13 @@ class _MyHomePageState extends State<MyHomePage>
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(left: 24),
-        ),
-        Text(
-          '9.2分',
-          textAlign: TextAlign.right,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28.0,
+          child: Text(
+            '9.2分',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 28.0,
+            ),
           ),
         ),
       ],
@@ -174,18 +175,18 @@ class _MyHomePageState extends State<MyHomePage>
     return Row(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: 24),
+          padding: EdgeInsets.only(left: 24, top: 5),
+          child: Text('年份',
+              textAlign: TextAlign.right,
+              style: TextStyle(color: Colors.black, fontSize: 22.0)),
         ),
-        Text('年份',
-            textAlign: TextAlign.right,
-            style: TextStyle(color: Colors.white, fontSize: 22.0)),
         Padding(
-          padding: EdgeInsets.only(left: 12),
+          padding: EdgeInsets.only(left: 12, top: 9),
+          child: Text(
+            '2003',
+            style: TextStyle(color: Colors.black, fontSize: 22.0),
+          ),
         ),
-        Text(
-          '2003',
-          style: TextStyle(color: Colors.white, fontSize: 22.0),
-        )
       ],
     );
   }
@@ -194,11 +195,11 @@ class _MyHomePageState extends State<MyHomePage>
     return Row(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: 24),
+          padding: EdgeInsets.only(left: 24, top: 5),
+          child: Text('类型',
+              textAlign: TextAlign.right,
+              style: TextStyle(color: Colors.white, fontSize: 22.0)),
         ),
-        Text('类型',
-            textAlign: TextAlign.right,
-            style: TextStyle(color: Colors.white, fontSize: 22.0)),
         Padding(
           padding: EdgeInsets.only(left: 12),
         ),
