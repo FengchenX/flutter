@@ -128,8 +128,8 @@ class _MyHomePageState extends State<MyHomePage>
 
   detailContainer() {
     return Container(
-      height: 222,
-      width: 234,
+      height: 246,
+      width: 230,
       child: Column(
         children: <Widget>[
           detailContainer2(),
