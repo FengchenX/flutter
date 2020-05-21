@@ -226,16 +226,19 @@ class _MyHomePageState extends State<MyHomePage>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 200,
-            height: 80,
+            width: 150,
+            height: 50,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: TabBar(
-              labelColor: Colors.black,
+              labelColor: Colors.blue,
+              unselectedLabelColor: Colors.black,
+              labelStyle: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
               tabs: tabs.map((e) => Tab(text: e)).toList(),
             ),
           ),
           Container(
-            width: 200,
-            height: 100,
+            width: 400,
+            height: 350,
             child: TabBarView(
               children: [
                 Container(
