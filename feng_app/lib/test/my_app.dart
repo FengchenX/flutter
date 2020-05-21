@@ -214,7 +214,6 @@ class _MyHomePageState extends State<MyHomePage>
     return Container(
       height: 418,
       width: 400,
-      alignment: Alignment.topLeft,
 //      child: bottomRow(_tabController, tabs),
       child: bottomTabController(tabs),
     );
@@ -225,11 +224,21 @@ class _MyHomePageState extends State<MyHomePage>
       length: tabs.length,
       child: Scaffold(
         appBar: TabBar(
+          labelColor: Colors.black,
           tabs: tabs.map((e) {
             return Tab(text: e);
           }).toList(),
         ),
-//        body: TabBarView(),
+        body: TabBarView(
+          children: [
+            Container(
+              color: Colors.black,
+            ),
+            Container(
+              color: Colors.blue,
+            )
+          ],
+        ),
       ),
     );
   }
