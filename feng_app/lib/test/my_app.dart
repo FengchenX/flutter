@@ -214,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage>
     return Container(
       height: 418,
       width: 400,
-//      child: bottomRow(_tabController, tabs),
+//      child: bottomTabController(tabs),
       child: bottomTabController(tabs),
     );
   }
@@ -222,23 +222,32 @@ class _MyHomePageState extends State<MyHomePage>
   bottomTabController(List tabs) {
     return DefaultTabController(
       length: tabs.length,
-      child: Scaffold(
-        appBar: TabBar(
-          labelColor: Colors.black,
-          tabs: tabs.map((e) {
-            return Tab(text: e);
-          }).toList(),
-        ),
-        body: TabBarView(
-          children: [
-            Container(
-              color: Colors.black,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 200,
+            height: 80,
+            child: TabBar(
+              labelColor: Colors.black,
+              tabs: tabs.map((e) => Tab(text: e)).toList(),
             ),
-            Container(
-              color: Colors.blue,
-            )
-          ],
-        ),
+          ),
+          Container(
+            width: 200,
+            height: 100,
+            child: TabBarView(
+              children: [
+                Container(
+                  color: Colors.black,
+                ),
+                Container(
+                  color: Colors.blue,
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
