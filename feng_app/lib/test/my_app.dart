@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   myScaffold(String title, List tabs) {
     return Scaffold(
-        backgroundColor: Colors.transparent,
+//        backgroundColor: Colors.transparent,
         appBar: myAppBar(title),
         body: myColumn(tabs));
   }
@@ -225,25 +225,13 @@ class _MyHomePageState extends State<MyHomePage>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 150,
-            height: 50,
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-            child: TabBar(
-              labelColor: Colors.blue,
-              unselectedLabelColor: Colors.black,
-              labelStyle: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
-              tabs: tabs.map((e) => Tab(text: e)).toList(),
-            ),
-          ),
+          tabBarContainer(tabs),
           Container(
             width: 400,
             height: 350,
             child: TabBarView(
               children: [
-                Container(
-                  color: Colors.black,
-                ),
+                seriesGridView(),
                 Container(
                   color: Colors.blue,
                 )
@@ -253,6 +241,39 @@ class _MyHomePageState extends State<MyHomePage>
         ],
       ),
     );
+  }
+
+  tabBarContainer(List tabs) {
+    return Container(
+      width: 150,
+      height: 50,
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      child: TabBar(
+        labelColor: Colors.blue,
+        unselectedLabelColor: Colors.black,
+        labelStyle: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+        tabs: tabs.map((e) => Tab(text: e)).toList(),
+      ),
+    );
+  }
+
+  seriesGridView() {
+    return GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4, //横轴三个子widget
+            childAspectRatio: 1.0 //宽高比为1时，子widget
+            ),
+        children: seriesButton());
+  }
+
+  seriesButton() {
+    List series = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    return series
+        .map((e) => RaisedButton(
+              child: Text(e.toString()),
+              onPressed: () {},
+            ))
+        .toList();
   }
 }
 
