@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage>
         ),
       ),
       title: Text(
-        widget.title,
+        title,
       ),
       centerTitle: true,
     );

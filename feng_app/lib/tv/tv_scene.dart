@@ -142,7 +142,7 @@ class TVSceneState extends State<TVScene> {
         ),
       ),
       onTap: () {
-//        AppNavigator.pushMovieDetail(context, m);
+        AppNavigator.pushTVDetail(context, m);
       },
     );
   }
