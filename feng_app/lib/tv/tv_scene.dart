@@ -28,13 +28,6 @@ class TVSceneState extends State<TVScene> {
   PageFilter filter;
   bool requesting = false;
   _get() async {
-//    var httpClient = new HttpClient();
-//    var uri = Uri.http('172.17.165.97:8080', '/movies');
-//    var request = await httpClient.getUrl(uri);
-//    var response = await request.close();
-//    var responseBody = await response.transform(utf8.decoder).join();
-//    Map<String, dynamic> data = json.decode(responseBody);
-
     requesting = true;
     GetTVs gettvs;
     try {
