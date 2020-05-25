@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fengapp/tv/tv_scene.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,13 +27,13 @@ class RootSceneState extends State<RootScene> {
 //    Image.asset('img/tab_comic_home_n.png'),
     Image.asset('img/tab_video_home_n.png'),
     Image.asset('img/tab_movie_home_n.png'),
-//    Image.asset('img/tab_mine_n.png'),
+    Image.asset('img/tab_mine_n.png'),
   ];
   List<Image> _tabSelectedImages = [
 //    Image.asset('img/tab_home_comic_p.png'),
     Image.asset('img/tab_video_home_p.png'),
     Image.asset('img/tab_movie_home_p.png'),
-//    Image.asset('img/tab_mine_p.png'),
+    Image.asset('img/tab_mine_p.png'),
   ];
 
   @override
@@ -110,6 +111,7 @@ class RootSceneState extends State<RootScene> {
 //            ComicHomeScene(),
             VideoScene(),
             MovieScene(),
+            TVScene(),
 //            HomeScene(),
 //            MeScene(),
           ],
@@ -122,6 +124,7 @@ class RootSceneState extends State<RootScene> {
 //            BottomNavigationBarItem(icon: getTabIcon(0)),
             BottomNavigationBarItem(icon: getTabIcon(0)),
             BottomNavigationBarItem(icon: getTabIcon(1)),
+            BottomNavigationBarItem(icon: getTabIcon(2)),
 //            BottomNavigationBarItem(icon: getTabIcon(3)),
           ],
           currentIndex: _tabIndex,

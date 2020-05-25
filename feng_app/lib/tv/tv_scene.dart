@@ -39,9 +39,21 @@ class TVSceneState extends State<TVScene> {
     if (!mounted) {
       return;
     }
-
     print(gettvs);
+
     setState(() {
+      gettvs = GetTVs.fromJson({
+        'total': 1,
+        'tvs': [
+          {
+            'id': '1213',
+            'name': '樱桃小丸子',
+            'thumb': 'http:www.icon.com',
+            'describe': '电视剧',
+            'videos': ['1', '2', '3']
+          }
+        ]
+      });
       list.addAll(gettvs.tvs);
     });
   }
