@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "new_page": (context) => EchoRoute(),
         "/": (context) => MyHomePage(
               title: '樱桃小丸子',
             )
@@ -47,12 +46,6 @@ class _MyHomePageState extends State<MyHomePage>
     super.initState();
     title = widget.title;
   }
-
-  Route<Object> get route => MaterialPageRoute(
-        builder: (context) {
-          return NewRoute();
-        },
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -274,82 +267,5 @@ class _MyHomePageState extends State<MyHomePage>
               onPressed: () {},
             ))
         .toList();
-  }
-}
-
-class NewRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('New route'),
-      ),
-      body: Center(
-        child: Text('This is new route'),
-      ),
-    );
-  }
-}
-
-class TipRoute extends StatelessWidget {
-  TipRoute({
-    Key key,
-    @required this.text,
-  });
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('提示'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(18),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Text(text),
-              RaisedButton(
-                onPressed: () => Navigator.pop(context, "我是返回值"),
-                child: Text('返回'),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class RouterTestRoute extends StatelessWidget {
-  Route<Object> get route => MaterialPageRoute(builder: (context) {
-        return TipRoute(
-          text: '我是提示xxx',
-        );
-      });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-        onPressed: () async {
-          var result = await Navigator.push(context, route);
-          print('路由返回值: $result');
-        },
-        child: Text('打开提示项'),
-      ),
-    );
-  }
-}
-
-class EchoRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var args = ModalRoute.of(context).settings.arguments;
-    return Scaffold(
-      body: Text(
-        args,
-      ),
-    );
   }
 }
